@@ -9,6 +9,12 @@ python manage.py runserver - start Django project
 Enjoy!
 </code>
 
+Django commands
+<code>
+python manage.py migrate - create migrations
+python manage.py makemigrations - create all migrations from settings.py - INSTALLED_APPS
+python manage.py createsuperuser - create superuser
+</code>
 
 APPS:
 
