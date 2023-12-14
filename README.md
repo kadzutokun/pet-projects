@@ -1,5 +1,8 @@
 pet-project - Course and Theses shop with Django framework
-APPS: 
+
+
+APPS:
+
     admin/
     shop/
     req/
