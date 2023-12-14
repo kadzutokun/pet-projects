@@ -1,0 +1,1 @@
+pet-project - Course and Theses shop with Django framework
