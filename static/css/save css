@@ -1,0 +1,21 @@
+.container
+{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.items
+{
+    margin-top: 30px;
+}
+
+.img
+{
+    float: left;
+}
+
+.itemsabout
+{   
+
+    margin-left: 500px;
+}

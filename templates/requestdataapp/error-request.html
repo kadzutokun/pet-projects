@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = 'uploadform'>
+<h1>Ошибка</h1>
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name='myfile'>
+    <div class='submitdiv'>
+    <p>Что-то пошло не так :C</p>
+    </div>
+    </div>
+</form>
+{% endblock  %}

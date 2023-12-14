@@ -1,0 +1,410 @@
+html,body{
+    height: 100%;
+
+}
+.table
+{
+    width: 1000px !important;
+}
+.showcourses
+{
+    margin-left: 37% !important;
+}
+.container
+{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.items
+{
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.img
+{
+    float: left;
+
+}
+
+.itemsabout
+{   
+    width: 100%;
+    height: 500px;
+    margin-left: 550px;
+}
+
+.coursename
+{
+   justify-content: center;
+    display: flex;
+}
+
+.itemsfooter
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemsinfo
+{
+    height: 300px;
+}
+
+.buybutton {
+    text-decoration: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .3s;
+  }
+  .buybutton:hover {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+    color: white;
+    transform: translateY(-7px);
+  }
+
+.positionbutton
+{
+    justify-content: center;
+    display: flex;
+}
+
+body
+{
+    color: white;
+    background-image: url(../img/bg.jpg)
+}
+
+* {
+    box-sizing: border-box;
+ }
+ .img {
+    position: relative;
+    display: table;
+    margin: 50px auto;
+ }
+ .img img {
+    display: block;
+ }
+ .img:before, .img:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: 2px solid purple;
+ }
+ .img:before {
+    top: -15px;
+    left: -15px;
+ }
+ .img:after {
+    right: -15px;
+    bottom: -15px;
+ }
+ .img {
+    position: relative;
+    z-index: 2;
+    padding: 5px;
+    box-shadow: 1px 1px 20px 0 rgba(0, 0, 0, 0.1);
+ }
+
+.center
+{
+    margin-left: 50%;
+}
+
+ .bioform {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50%;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px 100px;
+
+    
+ }
+
+
+ .loginform {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50%;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 10px 100px;
+    width: 35%;
+    
+ }
+
+.h1bio
+{
+    display: flex;
+    justify-content: center;
+}
+
+ .savebutton {
+    text-decoration: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin-left:   37%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .3s;
+  }
+  .savebutton:hover {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+    color: white;
+    transform: translateY(-7px);
+  }
+
+tr {
+    width: 30%;
+}
+
+
+.UserBioarea input
+{
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 0.25rem;
+    border-color: gray;
+    border-width: 1px;
+    width: 100%;
+}
+
+
+.loginarea input
+{
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 0.25rem;
+    border-color: gray;
+    border-width: 1px;
+    width: 100%;
+}
+
+.UserBioarea select
+{
+    color: white;
+    display: flex;
+    justify-content: center;
+    background-image: url(../img/bg.jpg);
+    text-align: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 0.25rem;
+    border-color: gray;
+    border-width: 1px;
+    width: 100%;
+}
+
+.UserBioarea option
+{
+    color: white;
+    background-color: rgb(128, 118, 118);
+}
+
+input::-webkit-input-placeholder {
+	letter-spacing: 0.40mm;
+	color: gray;
+	font-family: 'Exo', sans-serif;
+}
+.register a
+{
+    padding-bottom: 7px;   
+    display: flex;
+    color: black;
+}
+.formaabout
+{   
+    display: flex;
+    color: black;
+    line-height: 110px;
+    font-family: "FSElliotPro";
+    font-weight: 700;
+    position: relative;
+    height: 75px;
+}
+
+
+.formalogin
+{   
+    display: flex;
+    color: black;
+    line-height: 110px;
+    font-family: "FSElliotPro";
+    font-weight: 700;
+    position: relative;
+    height: 75px;
+}
+
+input
+{
+    background: transparent;
+    /* Убираем рамки вокруг поля ввода */
+    border-color: white
+
+
+}
+
+.uploadform
+{
+    display: flex;
+    flex-direction: column;
+    margin-left: 57%;
+
+}
+
+.password
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.university
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.email
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.buttonregsubmit
+{   
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    background:  #3bb2f6;
+    border-color: white;
+    color: white;
+    box-shadow: none;
+
+}
+.submitreg
+{
+    padding-top: 20px;
+}
+.text-red-600
+{
+    color: red;
+}
+
+.login
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.UserBioarea
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.loginarea
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+
+
+.surname
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.filebutton {
+    text-decoration: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin-left:   0%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .3s;
+  }
+  .filebutton:hover {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+    color: white;
+    transform: translateY(-7px);
+  }
+
+  .submitdiv
+  {
+    padding-top: 17px;
+    margin-left: 11%;
+  }
+
+
+.pos
+{   
+    white-space: nowrap;
+    margin-left: 50%;
+}
+
+.divtools
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

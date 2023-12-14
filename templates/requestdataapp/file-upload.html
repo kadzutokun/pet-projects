@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = 'uploadform'>
+<h1>Загрузка файла</h1>
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name='myfile'>
+    <div class='submitdiv'>
+    <button type='submit', class = "filebutton", class= "center">Загрузить</button>
+    </div>
+    </div>
+</form>
+{% endblock  %}

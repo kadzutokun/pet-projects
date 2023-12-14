@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>Order # {{order.pk}}</h1>
+<h2>Details</h2>
+<h1>Дата заказа: {{order.date}}</h1>
+<h1>Статус: {{order.status}}</h1>
+<h1>Заказан выполняет: {{order.user}}</h1>
+{% endblock content %}

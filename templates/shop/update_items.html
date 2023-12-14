@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class='pos'>Форма редактирования продуктов</h1>
+<div class = 'bioform'>
+        <form method='post'>
+        {% csrf_token %}
+    
+                <div class = "formaabout"></div>
+            <div class="UserBioarea">
+                {{form.as_p}}
+            </div>
+            <div class="submitreg">
+                <button type='submit', class = "savebutton", class= "center">Изменить</button>
+            </form>
+            </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
+
+

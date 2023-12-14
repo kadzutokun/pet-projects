@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content  %}
+<div class = 'bioform'>
+<h1 class='h1bio'>Форма пользователя</h1>
+    <form method='post'>
+    {% csrf_token %}
+
+            <div class = "formaabout"></div>
+        <div class="UserBioarea">
+            {{form}}
+        </div>
+        <div class="submitreg">
+            <button type='submit', class = "savebutton", class= "center">Сохранить</button>
+        </form>
+        </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+{% endblock %}

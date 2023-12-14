@@ -1,0 +1,19 @@
+django-admin startproject (base) это название .(то есть здесь) - создание проекта django
+python manage.py runserver - запустить сервер django
+python manage.py startapp shop(название) - создать новое приложение django
+python manage.py migrate - создать все миграции в бд
+python manage.py createsuperuser - Создание аккаунта администратора
+python manage.py makemigrations - Создание миграций для всех зарегестированных приложений из файла base - settings.py - INSTALLED_APPS (НОВЫХ ПРИЛОЖЕНИЙ)
+
+
+ДОСТУП К МОДЕЛЯМ ВЗАИМОДЕЙСТВИЯ С БД:
+python manage.py shell
+from shop.models(название приложения) import Category, Course (Название таблиц в БД)
+Course.objects.all() - получение всех записей в Course
+new_Category = Category(name=, name2=) - Передать в класс все атрибуты класса(БЕЗ УЧЕТА DEFAULT значений н.п timezone) -- Создание новой записи в БД Category. ТАКЖЕ ОБЯЗАТЕЛЬНО ВЫЗВАТЬ МЕТОД SAVE
+new_Category.save()
+Category.objects.get(name=)
+
+Создание записей в foreign таблицах
+Category(pk) = Category.objects.get(id=1)
+category.Course_set.create(name1=, name2=)
