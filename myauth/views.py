@@ -3,7 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpRequest
 from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
+from . import models
 # Create your views here.
 
 def login_view(request: HttpRequest):
@@ -31,8 +32,16 @@ def logoutView(request:HttpRequest):
     return redirect(reverse('myauth:login'))
 
 
-class AboutMeView(TemplateView):
+class AboutMeView(UpdateView):
     template_name = 'myauth/user_info.html'
+    model = models.Profile
+    fields = 'university',
+    success_url = 'myauth:profle'
+    def get_success_url(self):
+        return reverse(
+            'myauth:profile',
+            kwargs={'pk': self.object.pk}
+        )
 
 class RegisterView(CreateView):
     form_class = UserCreationForm
@@ -40,6 +49,7 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('myauth:profile')
     def form_valid(self, form): # Переопределение form_valid, дабы после регистрации осуществлять автоматический вход на аккаунт
         response = super().form_valid(form)
+        models.Profile.objects.create(user = self.object)
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
 

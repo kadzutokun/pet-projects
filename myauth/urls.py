@@ -8,7 +8,7 @@ urlpatterns = [
     #path('login/', login_view, name = 'login')
     path('login/',LoginView.as_view(template_name = 'myauth/login.html', redirect_authenticated_user = True), name= 'login'),
     path('logout/', views.logoutView, name = 'logout'),
-    path('profile/', views.AboutMeView.as_view(), name='profile'),
+    path('profile/<int:pk>', views.AboutMeView.as_view(), name='profile'),
     path('register/', views.RegisterView.as_view(), name='register')
 ]
 

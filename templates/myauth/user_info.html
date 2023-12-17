@@ -2,18 +2,28 @@
 {% block body %}
 
 {% if user.is_authenticated %}
-<h1 class='pos'>
+<div class = 'loginform'>
+<label>Ваш логин: {{user.username}}</label>
+<label>Ваш e-mail: {{user.email}}</label>
+        <form method='post'>
+        {% csrf_token %}
+    
+            <div class="UserBioarea">
+                {{form.as_p}}
+            </div>
+            <div class="submitreg">
+                <button type='submit', class = "savebutton", class= "center">Изменить</button>
+            </form>
+            </div>
+            <a class = 'pos' href={% url "myauth:logout" %}> Выйти</a>
 
-Ваш логин: {{user.username}}
-<p></p>
-
-
-Ваш email: {{user.email}}
-
-<p></p>
-</h1>
-
-<a class = 'pos' href={% url "myauth:logout" %}> Выйти</a>
+                </div>
+                
+            </div>
+            
+        </form>
+        
+    </div>
 
 
 

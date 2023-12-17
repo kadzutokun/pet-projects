@@ -3,7 +3,11 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Create your models here.
+
 class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Категории товаров'
     title = models.CharField(max_length=255)
     created_at = models.DateTimeField(default=timezone.now)
 
@@ -14,7 +18,7 @@ class Category(models.Model):
 class Course(models.Model):
     class Meta:
         ordering = ['title'] # Сортировка по полю title
-        verbose_name_plural = "Работы" # Указание как будет выглядить во мн.ч
+        verbose_name_plural = "Товары" # Указание как будет выглядить во мн.ч
 
     title = models.CharField(max_length=255)
     about = models.TextField(null=False, blank=True)
@@ -29,6 +33,8 @@ class Course(models.Model):
         return self.title
     
 class Order(models.Model):
+    class Meta:
+        verbose_name_plural = 'Заказы'
     choicesorderstatus = [
         ('Accepted','Заказ принят'),
         ('paid','Заказ оплачен'),
