@@ -1,0 +1,26 @@
+{% extends "myauth/base.html" %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<h1 class='pos'>
+
+Ваш логин: {{user.username}}
+<p></p>
+
+
+Ваш email: {{user.email}}
+
+<p></p>
+</h1>
+
+<a class = 'pos' href={% url "myauth:logout" %}> Выйти</a>
+
+
+
+{% else %}
+<h1> Вы не выполнили вход</h1>
+{% endif %}
+
+{% endblock body %}
+
+

@@ -1,0 +1,27 @@
+{% extends "myauth/base.html" %}
+{% block body %}
+
+<div class = 'loginform'>
+    <form method='post'>
+        {% csrf_token %}
+        {% if error %}
+        {{error}}
+        {% endif %}
+                <div class = "formalogin"></div>
+            <div class="loginarea">
+                {{form.as_p}}
+            </div>
+    
+    
+            <div class="submitreg">
+                <button type='submit', class = "savebutton", class= "center">Зарегестрироваться</button>
+            </form>
+            </div>
+                </div>
+    
+            </div>
+        </form>
+    </div>
+    </div>
+
+{% endblock body %}

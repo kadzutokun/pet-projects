@@ -23,3 +23,4 @@ admin.site.register(models.Course,CourseAdmin)
 admin.site.register(models.Order, OrderAdmin)
 
 
+
