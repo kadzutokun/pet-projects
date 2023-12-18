@@ -13,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = 'id', 'coursetype', 'status', 'user_verbose'
     list_display_links = ['coursetype']
     def user_verbose(self, obj: models.Order) -> str:
-        return (obj.user.first_name + ' ' + obj.user.last_name) or obj.user.username
+        return obj.user.username #(obj.user.first_name + ' ' + obj.user.last_name) 
     search_fields = ['coursetype__title','user__last_name','user__first_name']
     def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
         return models.Order.objects.select_related('user').prefetch_related('coursetype')

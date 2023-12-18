@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView, CreateView, UpdateView
+from django.views.generic import TemplateView, CreateView, UpdateView, DetailView
 from . import models
 # Create your views here.
 
@@ -30,18 +30,22 @@ def logoutView(request:HttpRequest):
     # template_name = 'myauth/logout.html'
     logout(request)
     return redirect(reverse('myauth:login'))
+        
 
-
-class AboutMeView(UpdateView):
-    template_name = 'myauth/user_info.html'
+class AboutMeView(DetailView):
     model = models.Profile
-    fields = 'university',
-    success_url = 'myauth:profle'
+    template_name = 'myauth/user_info.html'
+    context_object_name = 'profile'
+ 
+
+class AboutMeViewUpdate(UpdateView):
+    template_name = 'myauth/user_info_edit.html'
+    model = models.Profile
+    fields = ('university','slug')
+    success_url = reverse_lazy('myauth:profileedit')
     def get_success_url(self):
-        return reverse(
-            'myauth:profile',
-            kwargs={'pk': self.object.pk}
-        )
+        return reverse('myauth:profile', kwargs={'slug': self.object.slug})
+
 
 class RegisterView(CreateView):
     form_class = UserCreationForm

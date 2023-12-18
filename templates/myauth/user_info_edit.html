@@ -1,0 +1,37 @@
+{% extends "myauth/base.html" %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class = 'loginform'>
+<label>Ваш логин: {{username}}</label>
+<label>Ваш e-mail: {{user.email}}</label>
+<label>Ваш университет: {{user.profile.university}}</label>
+        <form method='post'>
+        {% csrf_token %}
+    
+            <div class="UserBioarea">
+                {{form.as_p}}
+            </div>
+            <div class="submitreg">
+                <button type='submit', class = "savebutton", class= "center">Сохранить</button>
+            </form>
+            </div>
+            <a class = 'pos' href={% url "myauth:logout" %}> Выйти</a>
+
+                </div>
+                
+            </div>
+            
+        </form>
+        
+    </div>
+
+
+
+{% else %}
+<h1> Вы не выполнили вход</h1>
+{% endif %}
+
+{% endblock body %}
+
+
