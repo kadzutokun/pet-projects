@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpRequest, HttpResponseRedirect
+from django.contrib.auth.models import User, Group,Permission
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView
+from django.views import View
 from . import models
 # Create your views here.
 
@@ -51,16 +53,22 @@ class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'myauth/register.html'
     success_url = reverse_lazy('myauth:profile')
+
     def form_valid(self, form): # Переопределение form_valid, дабы после регистрации осуществлять автоматический вход на аккаунт
         response = super().form_valid(form)
         models.Profile.objects.create(user = self.object)
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
-
-
         user = authenticate(self.request, username=username, password = password)
         login(self.request, user)
         return response
 
 
+def get_cookie_view(request: HttpRequest):
+    value = request.COOKIES.get("fizz", 'default value')
+    return HttpResponse(f'Cookie value = {value}')
+
+class FooBarView(View):
+    def get(self, request: HttpRequest) -> JsonResponse:
+        return JsonResponse({'foo': 'bar', 'spam': 'eggs'})
 

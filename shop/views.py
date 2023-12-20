@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404, HttpRequest, HttpResponseRedirect
 from django.views import View
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from . import models
 
 # Create your views here.
@@ -11,7 +12,7 @@ from . import models
 #         course = get_object_or_404(models.Course, pk=pk)
 #         return render(request, 'shop/shop_item.html', {'course': course})
     
-class ShopDetailView(DetailView):
+class ShopDetailView(LoginRequiredMixin,DetailView):
     template_name = 'shop/shop_item.html'
     model = models.Course
     context_object_name = 'course'
@@ -36,7 +37,8 @@ class shopItems(ListView):
     queryset = models.Course.objects.filter(archived = False)
 
 
-class OrderDetail(DetailView):
+class OrderDetail(PermissionRequiredMixin,DetailView):
+    permission_required = 'shop.view_order'
     template_name = 'shop/orders.html'
     queryset = (models.Order.objects.select_related('user').prefetch_related('coursetype'))
     model = models.Order
