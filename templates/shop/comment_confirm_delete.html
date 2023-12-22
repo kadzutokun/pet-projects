@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class = 'pos'> Вы уверены что хотите удалить комментарий</h1>
+<h1 class = 'pos'>{{course.title}}</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="submitreg">
+            <button type='submit', class = "savebutton", class= "center">Подтвердить</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

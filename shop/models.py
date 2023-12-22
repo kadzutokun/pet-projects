@@ -47,8 +47,12 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
 
 class Comment(models.Model):
+    class Meta:
+        verbose_name_plural = 'Комментарии'
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     coursecom = models.ForeignKey(Course, on_delete = models.CASCADE)
     commenttext = models.TextField(null = False, blank = False)
     parent_id = models.IntegerField(null = True, blank = True) 
-
+    
+    def __str__(self):
+        return self.commenttext

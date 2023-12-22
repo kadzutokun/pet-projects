@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpRequest, HttpResponseRedirect
 from django.views import View
+from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic.edit import FormMixin
 from . import models
+from .forms import CommentForm
 
 # Create your views here.
 # class ShopDetailView(View):
@@ -12,16 +15,41 @@ from . import models
 #         course = get_object_or_404(models.Course, pk=pk)
 #         return render(request, 'shop/shop_item.html', {'course': course})
     
-class ShopDetailView(LoginRequiredMixin,DetailView):
+class ShopDetailView(LoginRequiredMixin,DetailView, CreateView):
     template_name = 'shop/shop_item.html'
     model = models.Course
     context_object_name = 'course'
+    form_class = CommentForm
+
 
     # Отрисовывание комментариев
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = models.Comment.objects.filter(coursecom=self.kwargs['pk']) 
         return context
+    
+
+    def post(self, request, *args, **kwargs):
+        course = self.get_object()
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.coursecom = course
+            comment.commenttext = form.cleaned_data['commenttext']
+            comment.save()
+            return redirect('shop:shop_item', pk=course.pk)
+        else:
+            context = self.get_context_data(object=self.object)
+            context['comment_form'] = form
+            return self.render_to_response(context)
+    
+        
+    def get_success_url(self):
+        return reverse(
+            'shop:shop_item',
+            kwargs={'pk': self.object.pk}
+        )
 
 # class shopItems(TemplateView):
 #     template_name = 'shop/courses.html'
@@ -48,6 +76,13 @@ class OrderDetail(PermissionRequiredMixin,DetailView):
     template_name = 'shop/orders.html'
     queryset = (models.Order.objects.select_related('user').prefetch_related('coursetype'))
     model = models.Order
+
+
+class CommentCreate(CreateView):
+    template_name = 'shop/shop_item.html'
+    model = models.Comment
+    fields = 'commenttext', 
+    success_url = reverse_lazy('shop:index')
 
 
 class shopCreate(CreateView):
@@ -77,7 +112,17 @@ class ShopItemDelete(DeleteView):
         self.object.save()
         return HttpResponseRedirect(success_url)
 
-    
+class CommentDelete(DeleteView):
+    model = models.Comment
+    success_url = reverse_lazy('shop:index')
+    def CommentDelete(request):
+        comment = models.Comment.objects.all()
+        if comment.user == request.user:
+            comment.is_removed == True
+            comment.save()
+        return reverse_lazy('shop:index')
+
+
 
 
 # class ShopIndexView(View):

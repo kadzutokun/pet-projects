@@ -42,7 +42,8 @@ html,body{
 }
 
 .itemsfooter
-{
+{   
+    margin-top: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +51,7 @@ html,body{
 
 .itemsinfo
 {
-    height: 300px;
+
 }
 
 .buybutton {
@@ -403,8 +404,41 @@ input
 }
 
 .divtools
-{
-    display: flex;
+{   
+    margin-left: 85%;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #353333;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.comment-text {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.comment-user {
+    font-style: italic;
+    color: #ff1616;
+}
+
+.comment-divider {
+    position: absolute; /* Абсолютное позиционирование для линии */
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd; /* Цвет линии-разделителя */
+}
+
+.footer 
+{   
+    flex: 0 0 auto;
 }

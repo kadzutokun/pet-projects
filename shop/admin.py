@@ -17,9 +17,12 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ['coursetype__title','user__last_name','user__first_name']
     def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
         return models.Order.objects.select_related('user').prefetch_related('coursetype')
-
+    
+class CommentAdmin(admin.ModelAdmin):
+    list_display = 'id', 'coursecom','user', 'commenttext',
+    list_display_links = ['id', 'commenttext',]
 admin.site.register(models.Category)
-admin.site.register(models.Comment)
+admin.site.register(models.Comment, CommentAdmin)
 admin.site.register(models.Course,CourseAdmin)
 admin.site.register(models.Order, OrderAdmin)
 

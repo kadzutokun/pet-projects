@@ -8,7 +8,7 @@
 </div>
 <div class='itemsabout'>
 <h1 class="coursename">{{course.title}}</h1>
-<h3 class='itemsinfo'>{{course.about}}</h3>
+<div class='itemsinfo'>{{course.about}}</div>
 <div class='itemsfooter'>
 <h2>Цена {{course.price}} руб. <h2>
 <p>Количество заказавших данную работу: {{course.check_qty}}<p>
@@ -18,20 +18,35 @@
 </div>
 <div class = 'divtools'>
 <a href="{% url 'shop:shopCreate' %}">Создать новый продукт</a>
+<p></p>
 <a href="{% url 'shop:shop_item_update' pk=course.pk %}">Изменить</a>
+<p></p>
 <a href="{% url 'shop:shop_item_delete' pk=course.pk %}">Архивировать</a>
+<p></p>
 <a href="{% url 'shop:index' %}">Вернуться назад</a>
+<p></p>
 <div>
 </div>
 </div>
 </div>
 </div>
-<h1>Комментарии:</h1>
+
+
+<p class="comment-divider"></p>
+<p>Комментарии:</p>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type='submit', class = "savebutton", class= "center">Создать</button>
+</form>
 {% for comment in comments %}
     <div class = 'comment'>
-    <h1>Автор: {{comment.user.username}}</h1>
-    <h2>{{comment.commenttext}}</h2>
+    <p class = 'comment-user'>Автор: {{comment.user.username}}</p>
+    <p class = 'comment-text'>{{comment.commenttext}}</p>
     </div>
+    {% if user.id == comment.user_id %}
+        <a href="{% url "shop:comment_delete" pk=comment.pk %}">Удалить</a>
+    {% endif %}
 {% endfor %}
 <div>
 
