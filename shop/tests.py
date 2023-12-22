@@ -51,5 +51,12 @@ class ProductDetailViewTestCase(TestCase):
         response = self.client.get(
             reverse('shop:shop_item', kwargs = {"pk": self.product.pk})
             )
-        self.assertEqual(response.status_code, 200)
-        
+        self.assertEqual(response, self.product.title)
+
+class ProductInfoViewTestCase(TestCase):    
+    def test_products(self):
+        response = self.client.get(reverse('shop:index'))
+        courses = models.Course.objects.filter(archived = False).all()
+        course_test = response.context['courses']
+        for p,p_test in zip(courses, course_test):
+            self.assertEqual(p.pk, p_test.pk)

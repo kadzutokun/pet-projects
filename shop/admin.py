@@ -19,6 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
         return models.Order.objects.select_related('user').prefetch_related('coursetype')
 
 admin.site.register(models.Category)
+admin.site.register(models.Comment)
 admin.site.register(models.Course,CourseAdmin)
 admin.site.register(models.Order, OrderAdmin)
 

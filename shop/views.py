@@ -17,6 +17,12 @@ class ShopDetailView(LoginRequiredMixin,DetailView):
     model = models.Course
     context_object_name = 'course'
 
+    # Отрисовывание комментариев
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = models.Comment.objects.filter(coursecom=self.kwargs['pk']) 
+        return context
+
 # class shopItems(TemplateView):
 #     template_name = 'shop/courses.html'
 

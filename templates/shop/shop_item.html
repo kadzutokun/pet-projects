@@ -21,9 +21,18 @@
 <a href="{% url 'shop:shop_item_update' pk=course.pk %}">Изменить</a>
 <a href="{% url 'shop:shop_item_delete' pk=course.pk %}">Архивировать</a>
 <a href="{% url 'shop:index' %}">Вернуться назад</a>
+<div>
 </div>
 </div>
 </div>
+</div>
+<h1>Комментарии:</h1>
+{% for comment in comments %}
+    <div class = 'comment'>
+    <h1>Автор: {{comment.user.username}}</h1>
+    <h2>{{comment.commenttext}}</h2>
+    </div>
+{% endfor %}
 <div>
 
 </div>

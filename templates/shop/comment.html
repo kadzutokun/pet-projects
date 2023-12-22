@@ -1,0 +1,9 @@
+{% extends "shop_item.html" %}
+{% block comment %}
+{% for comment in comments %}
+    <div class = 'comment'>
+    <h1>Автор: {{comment.user}}</h1>
+    <h2>{{comment.commenttext}}</h2>
+    </div>
+{% endfor %}
+{% endblock comment %}

@@ -46,3 +46,9 @@ class Order(models.Model):
     status = models.CharField(max_length=255, choices=choicesorderstatus)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
 
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    coursecom = models.ForeignKey(Course, on_delete = models.CASCADE)
+    commenttext = models.TextField(null = False, blank = False)
+    parent_id = models.IntegerField(null = True, blank = True) 
+

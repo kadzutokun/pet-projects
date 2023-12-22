@@ -1,0 +1,30 @@
+[
+    {
+        "model": "shop.course",
+        "pk": 1,
+        "fields": {
+            "title": "DataBase course work",
+            "about": "DataBase course work",
+            "price": 5000,
+            "check_qty": 0,
+            "reviews_qty": 0,
+            "Category": 1,
+            "archived": false,
+            "created_at": "2023-12-17T17:56:30Z"
+        }
+    },
+    {
+        "model": "shop.course",
+        "pk": 2,
+        "fields": {
+            "title": "Law course work",
+            "about": "Law course work",
+            "price": 100000,
+            "check_qty": 100,
+            "reviews_qty": 100,
+            "Category": 1,
+            "archived": true,
+            "created_at": "2023-12-21T13:15:28Z"
+        }
+    }
+]
