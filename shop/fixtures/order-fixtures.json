@@ -1,0 +1,22 @@
+[
+    {
+        "model": "shop.order",
+        "pk": 3,
+        "fields": {
+            "coursetype": 4,
+            "date": "2023-12-23T11:50:16.376Z",
+            "status": "Accepted",
+            "user": 1
+        }
+    },
+    {
+        "model": "shop.order",
+        "pk": 4,
+        "fields": {
+            "coursetype": 4,
+            "date": "2023-12-23T18:30:02.174Z",
+            "status": "comleted",
+            "user": 1
+        }
+    }
+]

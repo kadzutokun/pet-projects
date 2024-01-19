@@ -1,0 +1,22 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$XQSRYa7hT6Zret9iflfiJQ$hhgSEENOknfcE3SScxNtUXX+1slSVSHZQv4jSUutkmk=",
+            "last_login": "2023-12-23T17:50:49Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "saltvsvinegar@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-12-17T17:55:58Z",
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    }
+]

@@ -52,7 +52,7 @@ class AboutMeViewUpdate(UpdateView):
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'myauth/register.html'
-    success_url = reverse_lazy('myauth:profile')
+    success_url = reverse_lazy('shop:index')
 
     def form_valid(self, form): # Переопределение form_valid, дабы после регистрации осуществлять автоматический вход на аккаунт
         response = super().form_valid(form)

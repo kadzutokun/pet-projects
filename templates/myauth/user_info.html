@@ -7,7 +7,7 @@
 <label>Ваш e-mail: {{user.email}}</label>
 <label>Ваш университет: {{user.profile.university}}</label>
             <div class="submitreg">
-                <a class = "savebutton", class= "center", href={% url "myauth:profileedit" user.profile.slug%}>Изменить</a>
+                <a class = "savebutton", class= "center", href={% url "myauth:profileedit" profile.slug%}>Изменить</a>
             <a class = 'pos' href={% url "myauth:logout" %}> Выйти</a>
 
 

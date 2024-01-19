@@ -5,6 +5,9 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 class Profile(models.Model):
+    class Meta:
+        verbose_name_plural = 'Профили пользователей'
+        ordering = ['slug',]
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     choiceuniversity = [
         ('KFU','Казанский Федеральный Университет'),
@@ -13,7 +16,7 @@ class Profile(models.Model):
         ('КГЭУ','Казанский государственный экономический университет'),
         ('Другой','Нет в списке')
     ]
-    university = models.CharField(max_length=255, choices=choiceuniversity)
+    university = models.CharField(max_length=255, choices=choiceuniversity, blank = True)
     agreement_accepted = models.BooleanField(default = False)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, blank=True, verbose_name="URL")
     def __str__(self):

@@ -1,0 +1,10 @@
+[
+    {
+        "model": "shop.category",
+        "pk": 2,
+        "fields": {
+            "title": "Course Work",
+            "created_at": "2023-12-23T11:25:42Z"
+        }
+    }
+]

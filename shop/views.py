@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, Http404, HttpRequest, HttpResponseRedirect
+from django.http import HttpResponse, Http404, HttpRequest, HttpResponseRedirect, JsonResponse
 from django.views import View
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
@@ -71,8 +71,8 @@ class shopItems(ListView):
     queryset = models.Course.objects.filter(archived = False)
 
 
-class OrderDetail(PermissionRequiredMixin,DetailView):
-    permission_required = 'shop.view_order'
+class OrderDetail(DetailView): #PermissionRequiredMixin,
+    #permission_required = 'shop.view_order'
     template_name = 'shop/orders.html'
     queryset = (models.Order.objects.select_related('user').prefetch_related('coursetype'))
     model = models.Order
@@ -88,13 +88,13 @@ class CommentCreate(CreateView):
 class shopCreate(CreateView):
     template_name = 'shop/create_items.html'
     model = models.Course
-    fields = 'title', 'price','check_qty', 'reviews_qty','Category'
+    fields = 'title', 'price','check_qty', 'reviews_qty','preview','Category'
     success_url = reverse_lazy('shop:index')
 
 class shopitemupdate(UpdateView):
     template_name = 'shop/update_items.html'
     model = models.Course
-    fields = 'title', 'price','check_qty', 'reviews_qty','Category','archived','about'
+    fields = 'title', 'price','check_qty', 'reviews_qty','Category','archived','about', 'preview'
     success_url = reverse_lazy('shop:shop_item')
     def get_success_url(self):
         return reverse(
@@ -123,7 +123,19 @@ class CommentDelete(DeleteView):
         return reverse_lazy('shop:index')
 
 
+class ProductDataExportView(View):
+    def get(self, request:HttpRequest) -> JsonResponse:
+        products = models.Course.objects.order_by('pk').all()
+        products_data = [
+            {   
+                'pk': product.pk,
+                'title': product.title,
+                'price': product.price
 
+            }
+            for product in products
+        ]
+        return JsonResponse({'products':products_data})
 
 # class ShopIndexView(View):
 #     def get(self,request):

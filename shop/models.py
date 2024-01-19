@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
+def product_image_directory(instance: "Course", filename: str) -> str:
+    return "products/product_{title}/preview/{filename}".format(
+        title = instance.title,
+        filename = filename,
+    )
+
 class Category(models.Model):
 
     class Meta:
@@ -28,6 +35,7 @@ class Course(models.Model):
     Category = models.ForeignKey(Category, on_delete=models.CASCADE)
     archived = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
+    preview = models.ImageField(null = True, blank = True, upload_to = product_image_directory)
 
     def __str__(self):
         return self.title
@@ -45,6 +53,7 @@ class Order(models.Model):
     date = models.DateTimeField(auto_now_add=True, verbose_name="Дата заказа")
     status = models.CharField(max_length=255, choices=choicesorderstatus)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
+    receipt = models.FileField(null = True, upload_to = 'orders/receipts/')
 
 class Comment(models.Model):
     class Meta:

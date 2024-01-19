@@ -11,5 +11,6 @@ urlpatterns = [
     path('update/<int:pk>', views.shopitemupdate.as_view(), name = 'shop_item_update'),
     path('delete/<int:pk>', views.ShopItemDelete.as_view(), name = 'shop_item_delete'),
     path('order/<int:pk>', views.OrderDetail.as_view(), name = 'order'),
-    path('comment/delete/<int:pk>', views.CommentDelete.as_view(), name = 'comment_delete')
+    path('comment/delete/<int:pk>', views.CommentDelete.as_view(), name = 'comment_delete'),
+    path('products/export/', views.ProductDataExportView.as_view(), name = 'product_export')
 ]
