@@ -7,7 +7,7 @@ How to start project?
     pipenv sync --dev - Install dependencies
     pipenv shell - Open Virtual environment
     python manage.py runserver - start Django project
-    Enjoy!</code>
+    Enjoy!
 
 Django commands
 
