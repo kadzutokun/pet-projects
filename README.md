@@ -2,6 +2,7 @@ pet-project - Course and Theses shop with Django framework
 
 How to start project?
 <br>
+
     <code>pip install pipenv - package for virtual environment
     pipenv sync --dev - Install dependencies
     pipenv shell - Open Virtual environment
